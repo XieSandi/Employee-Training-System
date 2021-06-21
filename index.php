@@ -37,9 +37,9 @@ $karyawan = mysql_query($query_karyawan, $connection) or die(mysql_error());
 $row_karyawan = mysql_fetch_assoc($karyawan);
 $totalRows_karyawan = mysql_num_rows($karyawan);
 
-$query_list = "CALL `list_peserta`(1)";
-//$query_list = "SET @test = `1`; CALL db_trainingsystem.list_peserta(@test);";
-$list = mysql_query($query_list,$connection) or die(mysql_error());
+$test = 1;
+$query_list = "CALL `list_peserta`($test)";
+$list = mysql_query($query_list,$connection) ;
 $row_list = mysql_fetch_assoc($list);
 $totalRows_list = mysql_num_rows($list);
 ?>
