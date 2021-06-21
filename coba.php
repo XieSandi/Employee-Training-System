@@ -6,6 +6,7 @@
 </head>
 
 <body>
-<a href="list_peserta.php?coba=2">LINK</a>
+<p>&nbsp;</p>
+<p><a href="list_peserta.php?coba=">LINK</a></p>
 </body>
 </html>
