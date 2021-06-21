@@ -63,10 +63,11 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
 }
 }
 
-$index_peserta_list_peserta = 1;
-if (isset($index_peserta_list_peserta)) {
-  $index_peserta_list_peserta = $index_peserta_list_peserta;
+$index_peserta_list_peserta = -1;
+if (isset($_GET['coba'])) {
+  $index_peserta_list_peserta = $_GET['coba'];
 }
+
 mysql_select_db($database_connection, $connection);
 $query_list_peserta = sprintf("SELECT training_list.pelatihan_ke,     karyawan.id_karyawan,     karyawan.nama,     training_list.nama_training, 	training_list.tanggal_training FROM training_list INNER JOIN karyawan ON karyawan.id_karyawan = training_list.id_karyawan WHERE training_list.pelatihan_ke = %s", GetSQLValueString($index_peserta_list_peserta, "int"));
 $list_peserta = mysql_query($query_list_peserta, $connection) or die(mysql_error());

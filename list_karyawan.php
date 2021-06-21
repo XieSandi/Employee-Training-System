@@ -69,12 +69,12 @@ $totalRows_list_karyawanikut = mysql_num_rows($list_karyawanikut);
       <td><?php echo $row_list_karyawanikut['username']; ?></td>
       <td><?php echo $row_list_karyawanikut['password']; ?></td>
       <td><?php echo $row_list_karyawanikut['access_level']; ?></td>
-      <td><a href="delete_karyawan.php?<?php echo $row_list_karyawanikut['id_karyawan']; ?>=<?php echo $row_list_karyawanikut['id_karyawan']; ?>">Delete</a> | <a href="edit_karyawan.php?id_karyawan=<?php echo $row_list_karyawanikut['id_karyawan']; ?>">Edit</a></td>
+      <td><a href="delete_karyawan.php?id_karyawan=<?php echo $row_list_karyawanikut['id_karyawan']; ?>">Delete</a> | <a href="edit_karyawan.php?id_karyawan=<?php echo $row_list_karyawanikut['id_karyawan']; ?>">Edit</a></td>
     </tr>
     <?php } while ($row_list_karyawanikut = mysql_fetch_assoc($list_karyawanikut)); ?>
 </table>
 <p>&nbsp;</p>
-<p><a href="testlink.php">Tambah</a></p>
+<p><a href="add_karyawan.php">Tambah</a></p>
 </body>
 </html>
 <?php
