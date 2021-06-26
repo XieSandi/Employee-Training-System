@@ -1,4 +1,4 @@
-<?php require_once('Connections/connection.php'); ?>
+<?php require_once('../Connections/connection.php'); ?>
 <?php
 if (!function_exists("GetSQLValueString")) {
 function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "") 
@@ -38,7 +38,7 @@ if ((isset($_GET['id_karyawan'])) && ($_GET['id_karyawan'] != "")) {
   mysql_select_db($database_connection, $connection);
   $Result1 = mysql_query($deleteSQL, $connection) or die(mysql_error());
 
-  $deleteGoTo = "list_karyawan.php";
+  $deleteGoTo = "../DOM/dashboard.php?page=daftar_karyawan";
   if (isset($_SERVER['QUERY_STRING'])) {
     $deleteGoTo .= (strpos($deleteGoTo, '?')) ? "&" : "?";
     $deleteGoTo .= $_SERVER['QUERY_STRING'];

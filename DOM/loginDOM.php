@@ -33,9 +33,10 @@ if($cek > 0){
 	}
 	else{
 		echo("<script>console.log('error di level');</script>");
+		header("location:../index.php?pesan=gagal");
 	}	
 }else{
 	echo("<script>console.log('error di cke');</script>");
-	// header("location:../index.php?pesan=gagal");
+	header("location:../index.php?pesan=gagal");
 }
 ?>
