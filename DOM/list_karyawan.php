@@ -1,4 +1,4 @@
-<?php require_once('Connections/connection.php'); ?>
+<?php require_once('../Connections/connection.php'); ?>
 <?php
 if (!function_exists("GetSQLValueString")) {
 function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "") 
@@ -32,10 +32,10 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
 }
 
 mysql_select_db($database_connection, $connection);
-$query_list_karyawanikut = "SELECT * FROM karyawan";
-$list_karyawanikut = mysql_query($query_list_karyawanikut, $connection) or die(mysql_error());
-$row_list_karyawanikut = mysql_fetch_assoc($list_karyawanikut);
-$totalRows_list_karyawanikut = mysql_num_rows($list_karyawanikut);
+$query_recordset_karyawan = "SELECT * FROM karyawan";
+$recordset_karyawan = mysql_query($query_recordset_karyawan, $connection) or die(mysql_error());
+$row_recordset_karyawan = mysql_fetch_assoc($recordset_karyawan);
+$totalRows_recordset_karyawan = mysql_num_rows($recordset_karyawan);
 ?>
 
 <!DOCTYPE html>
@@ -50,6 +50,7 @@ $totalRows_list_karyawanikut = mysql_num_rows($list_karyawanikut);
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
         <link href="../css/styles.css" rel="stylesheet" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
+    
     </head>
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
@@ -171,15 +172,15 @@ $totalRows_list_karyawanikut = mysql_num_rows($list_karyawanikut);
                                 <table id="datatablesSimple">
                                     <thead>
                                         <tr>
-                                            <td>id_karyawan</td>
-                                            <td>nama</td>
-                                            <td>alamat</td>
-                                            <td>tanggal lahir</td>
-                                            <td>unit</td>
-                                            <td>posisi</td>
-                                            <td>username</td>
-                                            <td>password</td>
-                                            <td>access_level</td>
+                                            <td>ID</td>
+                                            <td>Nama</td>
+                                            <td>Alamat</td>
+                                            <td>Tanggal Lahir</td>
+                                            <td>Unit</td>
+                                            <td>Posisi</td>
+                                            <td>Username</td>
+                                            <td>Password</td>
+                                            <td>Access_level</td>
                                             <td>Tools</td>
                                         </tr>
                                     </thead>
@@ -200,18 +201,18 @@ $totalRows_list_karyawanikut = mysql_num_rows($list_karyawanikut);
                                     <tbody>
                                         <?php do { ?>
                                             <tr>
-                                                <td><?php echo $row_list_karyawanikut['id_karyawan']; ?></td>
-                                                <td><?php echo $row_list_karyawanikut['nama']; ?></td>
-                                                <td><?php echo $row_list_karyawanikut['alamat']; ?></td>
-                                                <td><?php echo $row_list_karyawanikut['tanggal lahir']; ?></td>
-                                                <td><?php echo $row_list_karyawanikut['unit']; ?></td>
-                                                <td><?php echo $row_list_karyawanikut['posisi']; ?></td>
-                                                <td><?php echo $row_list_karyawanikut['username']; ?></td>
-                                                <td><?php echo $row_list_karyawanikut['password']; ?></td>
-                                                <td><?php echo $row_list_karyawanikut['access_level']; ?></td>
-                                                <td><a href="delete_karyawan.php?id_karyawan=<?php echo $row_list_karyawanikut['id_karyawan']; ?>">Delete</a> | <a href="edit_karyawan.php?id_karyawan=<?php echo $row_list_karyawanikut['id_karyawan']; ?>">Edit</a></td>
+                                                <td><?php echo $row_recordset_karyawan['id_karyawan']; ?></td>
+                                                <td><?php echo $row_recordset_karyawan['nama']; ?></td>
+                                                <td><?php echo $row_recordset_karyawan['alamat']; ?></td>
+                                                <td><?php echo $row_recordset_karyawan['tanggal lahir']; ?></td>
+                                                <td><?php echo $row_recordset_karyawan['unit']; ?></td>
+                                                <td><?php echo $row_recordset_karyawan['posisi']; ?></td>
+                                                <td><?php echo $row_recordset_karyawan['username']; ?></td>
+                                                <td><?php echo $row_recordset_karyawan['password']; ?></td>
+                                                <td><?php echo $row_recordset_karyawan['access_level']; ?></td>
+                                                <td><a href="delete_karyawan.php?id_karyawan=<?php echo $row_recordset_karyawan['id_karyawan']; ?>">Delete</a> | <a href="edit_karyawan.php?id_karyawan=<?php echo $row_recordset_karyawan['id_karyawan']; ?>">Edit</a></td>
                                             </tr>
-                                        <?php } while ($row_list_karyawanikut = mysql_fetch_assoc($list_karyawanikut)); ?>
+                                        <?php } while ($row_recordset_karyawan = mysql_fetch_assoc($recordset_karyawan)); ?>
                                     </tbody>
                                 </table>
                             </div>
@@ -238,3 +239,6 @@ $totalRows_list_karyawanikut = mysql_num_rows($list_karyawanikut);
         <script src="../js/datatables-simple-demo.js"></script>
     </body>
 </html>
+<?php
+mysql_free_result($recordset_karyawan);
+?>
