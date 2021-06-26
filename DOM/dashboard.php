@@ -1,9 +1,9 @@
 <?php 
 	session_start();	 
 	
-	if($_SESSION['level']==""){
-		header("location:../index.php?pesan=notloggin");
-	}
+	// if($_SESSION['access_level']==""){
+	// 	header("location:../index.php?pesan=notloggin");
+	// }
 ?>
 
 <!DOCTYPE html>

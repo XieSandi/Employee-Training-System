@@ -33,8 +33,8 @@
                                     <div class="card-body">
                                       <form id="form1" name="form1" method="POST" action="DOM/loginDOM.php">
                                           <div class="form-floating mb-3">
-                                                <input class="form-control" name="username" id="username" type="text" placeholder="name@example.com" />
-                                                <label for="username">Email address</label>
+                                                <input class="form-control" name="username" id="username" type="text" placeholder="Username" />
+                                                <label for="username">Username</label>
                                             </div>
                                             <div class="form-floating mb-3">
                                                 <input class="form-control" name="password" id="password" type="password" placeholder="Password" />
@@ -43,7 +43,6 @@
                                                 	<button class="btn btn-primary"type="submit" name="submit" id="submit" value="Submit">Login</button>
                                                 </div>
                                             </div>
-                                          
                                         </form>
                                     </div>
                                 </div>

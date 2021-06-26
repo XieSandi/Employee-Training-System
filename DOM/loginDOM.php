@@ -1,6 +1,6 @@
 <?php
-require_once('../Connections/connection.php');
 session_start();
+require_once('../Connections/connection.php');
 
 $username = $_POST['username'];
 $password = $_POST['password'];
@@ -8,7 +8,8 @@ $password = $_POST['password'];
 $query = mysql_query("select * from karyawan where username='$username' and password='$password'");
 $cek = mysql_num_rows($query);
 
- 
+echo $cek; 
+
 // cek apakah username dan password di temukan pada database
 if($cek > 0){
  
@@ -31,9 +32,10 @@ if($cek > 0){
 			echo("<script>console.log('anda employee , ini log nya');</script>");
 	}
 	else{
-		header("location:../index.php?pesan=gagal");
+		echo("<script>console.log('error di level');</script>");
 	}	
 }else{
-	header("location:../index.php?pesan=gagal");
+	echo("<script>console.log('error di cke');</script>");
+	// header("location:../index.php?pesan=gagal");
 }
 ?>
