@@ -46,7 +46,7 @@ if (isset($_POST['username'])) {
   $loginUsername=$_POST['username'];
   $password=$_POST['password'];
   $MM_fldUserAuthorization = "access_level";
-  $MM_redirectLoginSuccess = "indexlogin.php";
+  $MM_redirectLoginSuccess = "index.php";
   $MM_redirectLoginFailed = "coba login.php";
   $MM_redirecttoReferrer = false;
   mysql_select_db($database_connection, $connection);
@@ -68,7 +68,7 @@ if (isset($_POST['username'])) {
     if (isset($_SESSION['PrevUrl']) && false) {
       $MM_redirectLoginSuccess = $_SESSION['PrevUrl'];	
     }
-    header("Location: " . $MM_redirectLoginSuccess );
+    header("Location: " . $MM_redirectLoginSuccess + "access="+$loginStrGroup );
   }
   else {
     header("Location: ". $MM_redirectLoginFailed );
