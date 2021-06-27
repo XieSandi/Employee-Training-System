@@ -56,10 +56,10 @@ $totalPages_List = ceil($totalRows_List/$maxRows_List)-1;
 ?>
 
     <div class="container-fluid px-4">
-        <h1 class="mt-4">Daftar Karyawan</h1>
+        <h1 class="mt-4">Daftar Pelatihan</h1>
         <ol class="breadcrumb mb-4">
             <li class="breadcrumb-item"><a href="../DOM/dashboard.php">Dashboard</a></li>
-            <li class="breadcrumb-item active">Daftar Karyawan</li>
+            <li class="breadcrumb-item active">Daftar Pelatihan</li>
         </ol>
         <!-- <div class="card mb-4">
             <div class="card-body">
@@ -72,7 +72,7 @@ $totalPages_List = ceil($totalRows_List/$maxRows_List)-1;
         <div class="card mb-4">
             <div class="card-header">
                 <i class="fas fa-table me-1"></i>
-                Daftar Karyawan
+                Daftar Pelatihan
             </div>
             <div class="card-body">
                 <!-- <div class="d-grid gap-2 pb-3">
