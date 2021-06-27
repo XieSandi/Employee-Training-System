@@ -1,6 +1,11 @@
 <?php 
 	session_start();
-	
+	if(isset($_GET['pesan'])){
+		if($_GET['pesan']=="limited"){
+			echo "<script> alert('Anda tidak berhak akses');</script>";
+		}
+	}
+    
 	if($_SESSION['access_level']==""){
 		header("location:../index.php?pesan=notloggin");
 	}
@@ -61,6 +66,10 @@
                             <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                            Daftar Karyawan
                         </a>
+                        <a class="nav-link" href="../DOM/dashboard.php?page=daftar_pelatihan">
+                            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                           Daftar Pelatihan 
+                        </a>
                         <div class="collapse" id="collapsePages" aria-labelledby="headingTwo"
                             data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
@@ -118,10 +127,22 @@
 						$page = $_GET['page'];
 
 							switch ($page) {
-								case 'daftar_karyawan'  : include "../DOM/list_karyawan.php";
-									break;
+
+                                case 'daftar_karyawan'  : 
+                                    if ($access == "Employee"){
+                                        echo "<script> alert('Anda tidak berhak buka halaman tersebut');</script>";
+                                    }
+                                    else{
+                                       include "../DOM/list_karyawan.php"; 
+                                    }
+                                    break;
+                                    
 								case 'edit' : include '../DOM/edit_karyawan.php';
-									break;
+                                    break;
+
+                                case 'daftar_pelatihan' : include '../DOM/list_pelatihan.php';
+                                    break;
+
 								default :
 									echo "masuk ke else else gaiiss";
 								break;
