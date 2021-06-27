@@ -30,7 +30,7 @@
 <body class="sb-nav-fixed">
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
         <!-- Navbar Brand-->
-        <a class="navbar-brand ps-3" href="../DOM/dashboard.php">Employee Training System</a>
+        <a class="navbar-brand ps-3" href="../DOM/dashboard.php">Sistem Pelatihan</a>
 
         <!-- Sidebar Toggle-->
         <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i
@@ -137,8 +137,11 @@
                                     }
                                     break;
                                     
-								case 'edit' : include '../DOM/edit_karyawan.php';
+								case 'edit_karyawan' : include '../DOM/edit_karyawan.php';
                                     break;
+
+                                    case 'tambah_karyawan' : include '../DOM/add_karyawan.php';
+                                break;
 
                                 case 'daftar_pelatihan' : include '../DOM/list_pelatihan.php';
                                     break;

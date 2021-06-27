@@ -61,7 +61,7 @@ $totalRows_recordset_karyawan = mysql_num_rows($recordset_karyawan);
                     <button class="btn btn-primary block">Tambah Data</button>
                 </div> -->
                 <table id="datatablesSimple">
-                    <thead>
+                    <thead class="text-center">
                         <tr>
                             <td>ID</td>
                             <td>Nama</td>
@@ -70,48 +70,47 @@ $totalRows_recordset_karyawan = mysql_num_rows($recordset_karyawan);
                             <td>Unit</td>
                             <td>Posisi</td>
                             <td>Username</td>
-                            <td>Password</td>
+                            <!-- <td>Password</td> -->
                             <td>Access_level</td>
                             <td>Tools</td>
                         </tr>
                     </thead>
-                    <tfoot>
+                    <tfoot class="text-center">
                         <tr>
-                            <td>id_karyawa
-                            n</td>
-                            <td>nama</td>
-                            <td>alamat</td>
-                            <td>tanggal lahir</td>
-                            <td>unit</td>
-                            <td>posisi</td>
-                            <td>username</td>
-                            <td>password</td>
-                            <td>access_level</td>
+                            <td>ID</td>
+                            <td>Nama</td>
+                            <td>Alamat</td>
+                            <td>Tanggal Lahir</td>
+                            <td>Unit</td>
+                            <td>Posisi</td>
+                            <td>Username</td>
+                            <!-- <td>Password</td> -->
+                            <td>Access_level</td>
                             <td>Tools</td>
                         </tr>
                     </tfoot>
                     <tbody>
                         <?php do { ?>
                         <tr>
-                            <td><?php echo $row_recordset_karyawan['id_karyawan']; ?></td>
+                            <td class="text-center"><?php echo $row_recordset_karyawan['id_karyawan']; ?></td>
                             <td><?php echo $row_recordset_karyawan['nama']; ?></td>
                             <td><?php echo $row_recordset_karyawan['alamat']; ?></td>
                             <td><?php echo $row_recordset_karyawan['tanggal lahir']; ?></td>
                             <td><?php echo $row_recordset_karyawan['unit']; ?></td>
                             <td><?php echo $row_recordset_karyawan['posisi']; ?></td>
                             <td><?php echo $row_recordset_karyawan['username']; ?></td>
-                            <td><?php echo $row_recordset_karyawan['password']; ?></td>
+                            <!-- <td><?php //echo $row_recordset_karyawan['password']; ?></td> -->
                             <td><?php echo $row_recordset_karyawan['access_level']; ?></td>
-                            <td>
-                                <a class="btn btn-primary" href="edit_karyawan.php?id_karyawan=<?php echo $row_recordset_karyawan['id_karyawan']; ?>">Edit</a>
-                                <a class="btn btn-danger" href="../DOM/delete_karyawan.php?id_karyawan=<?php echo $row_recordset_karyawan['id_karyawan']; ?>">Delete</a>
+                            <td class="text-center">
+                                <a class="btn btn-primary m-1" href="edit_karyawan.php?id_karyawan=<?php echo $row_recordset_karyawan['id_karyawan']; ?>">Edit</a>
+                                <a class="btn btn-danger m-1" href="../DOM/delete_karyawan.php?id_karyawan=<?php echo $row_recordset_karyawan['id_karyawan']; ?>">Delete</a>
                             </td>
                         </tr>
                         <?php } while ($row_recordset_karyawan = mysql_fetch_assoc($recordset_karyawan)); ?>
                     </tbody>
                 </table>
-                <div class="d-grid gap-2">
-                    <button class="btn btn-primary block">Tambah Data</button>
+                <div class="d-grid gap-2 pt-3">
+                    <a class="btn btn-primary block" href="../DOM/dashboard.php?page=tambah_karyawan">Tambah Data</a>
                 </div>
             </div>
         </div>

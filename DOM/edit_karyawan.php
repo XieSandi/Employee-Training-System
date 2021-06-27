@@ -57,7 +57,7 @@ if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form1")) {
     $updateGoTo .= (strpos($updateGoTo, '?')) ? "&" : "?";
     $updateGoTo .= $_SERVER['QUERY_STRING'];
   }
-  header("location:dashboard.php?page=daftar_karyawan");
+  echo "<script>window.location='../DOM/dashboard.php?page=daftar_karyawan';</script>";
 }
 
 $colname_karyawan = "-1";

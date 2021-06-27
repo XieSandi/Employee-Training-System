@@ -1,4 +1,4 @@
-<?php require_once('Connections/connection.php'); ?>
+<?php require_once('../Connections/connection.php'); ?>
 <?php
 if (!function_exists("GetSQLValueString")) {
 function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "") 
@@ -37,8 +37,8 @@ if (isset($_SERVER['QUERY_STRING'])) {
 }
 
 if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
-  $insertSQL = sprintf("INSERT INTO karyawan (id_karyawan, nama, alamat, `tanggal lahir`, unit, posisi, username, password, access_level) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)",
-                       GetSQLValueString($_POST['id_karyawan'], "int"),
+  $insertSQL = sprintf("INSERT INTO karyawan (nama, alamat, `tanggal lahir`, unit, posisi, username, password, access_level) VALUES ( %s, %s, %s, %s, %s, %s, %s, %s)",
+                      //  GetSQLValueString($_POST['id_karyawan'], "int"),
                        GetSQLValueString($_POST['nama'], "text"),
                        GetSQLValueString($_POST['alamat'], "text"),
                        GetSQLValueString($_POST['tanggal_lahir'], "date"),
@@ -56,16 +56,16 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
     $insertGoTo .= (strpos($insertGoTo, '?')) ? "&" : "?";
     $insertGoTo .= $_SERVER['QUERY_STRING'];
   }
-  header(sprintf("Location: %s", $insertGoTo));
+  echo "<script>window.location='../DOM/dashboard.php?page=daftar_karyawan';</script>";
 }
 ?>
 
 <form method="post" name="form1" action="<?php echo $editFormAction; ?>">
   <table align="center">
-    <tr valign="baseline">
+    <!-- <tr valign="baseline">
       <td nowrap align="right">Id_karyawan:</td>
       <td><input type="text" name="id_karyawan" value="" size="32" disabled></td>
-    </tr>
+    </tr> -->
     <tr valign="baseline">
       <td nowrap align="right">Nama:</td>
       <td><input type="text" name="nama" value="" size="32"></td>

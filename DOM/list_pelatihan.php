@@ -81,7 +81,7 @@ $totalPages_List = ceil($totalRows_List/$maxRows_List)-1;
                 <table id="datatablesSimple">
                     <thead class="text-center">
                         <tr>
-                            <td>Termin Ke</td>
+                            <td>Index Proposal</td>
                             <!-- <td>id_karyawan</td> -->
                             <td>Nama Pelatihan</td>
                             <td>Waktu Pelatihan</td>
@@ -90,7 +90,7 @@ $totalPages_List = ceil($totalRows_List/$maxRows_List)-1;
                     </thead>
                     <tfoot class="text-center">
                         <tr>
-                            <td>Termin Ke</td>
+                            <td>Index Proposal</td>
                             <!-- <td>id_karyawan</td> -->
                             <td>Nama Pelatihan</td>
                             <td>Waktu Pelatihan</td>
@@ -116,7 +116,7 @@ $totalPages_List = ceil($totalRows_List/$maxRows_List)-1;
                         <?php } while ($row_List = mysql_fetch_assoc($List)); ?>
                     </tbody>
                 </table>
-                <div class="d-grid gap-2">
+                <div class="d-grid gap-2 pt-3">
                     <button class="btn btn-primary block">Tambah Data</button>
                 </div>
             </div>
@@ -124,5 +124,5 @@ $totalPages_List = ceil($totalRows_List/$maxRows_List)-1;
     </div>
 
 <?php
-mysql_free_result($recordset_karyawan);
+mysql_free_result($List);
 ?>
