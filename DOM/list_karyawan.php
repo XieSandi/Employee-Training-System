@@ -71,8 +71,8 @@ $totalRows_recordset_karyawan = mysql_num_rows($recordset_karyawan);
                             <td>Posisi</td>
                             <td>Username</td>
                             <!-- <td>Password</td> -->
-                            <td>Access_level</td>
-                            <td>Tools</td>
+                            <td>Access Level</td>
+                            <td>Actions</td>
                         </tr>
                     </thead>
                     <tfoot class="text-center">
@@ -85,8 +85,8 @@ $totalRows_recordset_karyawan = mysql_num_rows($recordset_karyawan);
                             <td>Posisi</td>
                             <td>Username</td>
                             <!-- <td>Password</td> -->
-                            <td>Access_level</td>
-                            <td>Tools</td>
+                            <td>Access Level</td>
+                            <td>Actions</td>
                         </tr>
                     </tfoot>
                     <tbody>

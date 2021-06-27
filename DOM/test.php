@@ -1,4 +1,4 @@
-<?php require_once('Connections/connection.php'); ?>
+<?php require_once('../Connections/connection.php'); ?>
 <?php
 if (!function_exists("GetSQLValueString")) {
 function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "") 
@@ -31,56 +31,38 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
 }
 }
 
-$maxRows_List = 10;
-$pageNum_List = 0;
-if (isset($_GET['pageNum_List'])) {
-  $pageNum_List = $_GET['pageNum_List'];
+$index_proposal_Recordset1 = "-1";
+if (isset($GET['index_proposal'])) {
+  $index_proposal_Recordset1 = $GET['index_proposal'];
 }
-$startRow_List = $pageNum_List * $maxRows_List;
-
-$index_pelatihan_List = "1";
 mysql_select_db($database_connection, $connection);
-$query_List = sprintf("SELECT * FROM training_list where pelatihan_ke = %s", GetSQLValueString($index_pelatihan_List, "int"));
-$query_limit_List = sprintf("%s LIMIT %d, %d", $query_List, $startRow_List, $maxRows_List);
-$List = mysql_query($query_limit_List, $connection) or die(mysql_error());
-$row_List = mysql_fetch_assoc($List);
-
-if (isset($_GET['totalRows_List'])) {
-  $totalRows_List = $_GET['totalRows_List'];
-} else {
-  $all_List = mysql_query($query_List);
-  $totalRows_List = mysql_num_rows($all_List);
-}
-$totalPages_List = ceil($totalRows_List/$maxRows_List)-1;
+$query_Recordset1 = sprintf("SELECT 	proposal.id_proposal,     proposal.tanggal_dikirim,     proposal.pelatihan_ke,     sum(training_list.biaya_training) as total_biaya,     proposal.approvedby_HRD,     proposal.approvedby_HC from 	proposal INNER JOIN training_list ON proposal.pelatihan_ke = training_list.pelatihan_ke WHERE 	proposal.pelatihan_ke = %s", GetSQLValueString($index_proposal_Recordset1, "int"));
+$Recordset1 = mysql_query($query_Recordset1, $connection) or die(mysql_error());
+$row_Recordset1 = mysql_fetch_assoc($Recordset1);
+$totalRows_Recordset1 = mysql_num_rows($Recordset1);
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Untitled Document</title>
-</head>
 
-<body>
 <table border="1">
   <tr>
+    <td>id_proposal</td>
+    <td>tanggal_dikirim</td>
     <td>pelatihan_ke</td>
-    <td>id_karyawan</td>
-    <td>nama_training</td>
-    <td>tanggal_training</td>
-    <td>biaya_training</td>
+    <td>total_biaya</td>
+    <td>approvedby_HRD</td>
+    <td>approvedby_HC</td>
   </tr>
   <?php do { ?>
     <tr>
-      <td><?php echo $row_List['pelatihan_ke']; ?></td>
-      <td><?php echo $row_List['id_karyawan']; ?></td>
-      <td><?php echo $row_List['nama_training']; ?></td>
-      <td><?php echo $row_List['tanggal_training']; ?></td>
-      <td><?php echo $row_List['biaya_training']; ?></td>
+      <td><?php echo $row_Recordset1['id_proposal']; ?></td>
+      <td><?php echo $row_Recordset1['tanggal_dikirim']; ?></td>
+      <td><?php echo $row_Recordset1['pelatihan_ke']; ?></td>
+      <td><?php echo $row_Recordset1['total_biaya']; ?></td>
+      <td><?php echo $row_Recordset1['approvedby_HRD']; ?></td>
+      <td><?php echo $row_Recordset1['approvedby_HC']; ?></td>
     </tr>
-    <?php } while ($row_List = mysql_fetch_assoc($List)); ?>
+    <?php } while ($row_Recordset1 = mysql_fetch_assoc($Recordset1)); ?>
 </table>
-</body>
-</html>
+
 <?php
-mysql_free_result($List);
+mysql_free_result($Recordset1);
 ?>

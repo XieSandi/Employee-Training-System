@@ -31,6 +31,16 @@ if($cek > 0){
 			header("location:dashboard.php");
 			echo("<script>console.log('anda employee , ini log nya');</script>");
 	}
+	else if($data['access_level']=="HR"){
+		$_SESSION['access_level'] = "HR";
+			header("location:dashboard.php");
+			echo("<script>console.log('anda HR , ini log nya');</script>");
+	}
+	else if($data['access_level']=="HC"){
+		$_SESSION['access_level'] = "HC";
+			header("location:dashboard.php");
+			echo("<script>console.log('anda HC , ini log nya');</script>");
+	}
 	else{
 		echo("<script>console.log('error di level');</script>");
 		header("location:../index.php?pesan=gagal");

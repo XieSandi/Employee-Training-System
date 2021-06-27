@@ -70,6 +70,10 @@
                             <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                            Daftar Pelatihan 
                         </a>
+                        <a class="nav-link" href="../DOM/dashboard.php?page=daftar_proposal">
+                            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                           Daftar Proposal 
+                        </a>
                         <div class="collapse" id="collapsePages" aria-labelledby="headingTwo"
                             data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
@@ -144,6 +148,9 @@
                                 break;
 
                                 case 'daftar_pelatihan' : include '../DOM/list_pelatihan.php';
+                                    break;
+
+                                case 'daftar_proposal' : include '../DOM/list_proposal.php';
                                     break;
 
 								default :

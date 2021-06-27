@@ -86,6 +86,7 @@ $totalPages_List = ceil($totalRows_List/$maxRows_List)-1;
                             <td>Nama Pelatihan</td>
                             <td>Waktu Pelatihan</td>
                             <td>Biaya / Peserta (Rupiah)</td>
+                            <td>Actions</td>
                         </tr>
                     </thead>
                     <tfoot class="text-center">
@@ -107,11 +108,15 @@ $totalPages_List = ceil($totalRows_List/$maxRows_List)-1;
                         }
                         do { ?>
                             <tr>
-                            <td class="text-center"><?php echo $row_List['pelatihan_ke']; ?></td>
-                            <!-- <td><?php //echo $row_List['id_karyawan']; ?></td> -->
-                            <td><?php echo $row_List['nama_training']; ?></td>
-                            <td class="text-center"><?php echo $row_List['tanggal_training']; ?></td>
-                            <td class="text-end"><?php echo rupiah($row_List['biaya_training']); ?>,-</td>
+                                <td class="text-center"><?php echo $row_List['pelatihan_ke']; ?></td>
+                                <!-- <td><?php //echo $row_List['id_karyawan']; ?></td> -->
+                                <td><?php echo $row_List['nama_training']; ?></td>
+                                <td class="text-center"><?php echo $row_List['tanggal_training']; ?></td>
+                                <td class="text-end"><?php echo rupiah($row_List['biaya_training']); ?>,-</td>
+                                <td class="text-center">
+                                    <a class="btn btn-primary m-1" href="edit_karyawan.php?id_karyawan=<?php echo $row_recordset_karyawan['id_karyawan']; ?>">Edit</a>
+                                    <a class="btn btn-danger m-1" href="../DOM/delete_karyawan.php?id_karyawan=<?php echo $row_recordset_karyawan['id_karyawan']; ?>">Delete</a>
+                                </td>
                             </tr>
                         <?php } while ($row_List = mysql_fetch_assoc($List)); ?>
                     </tbody>

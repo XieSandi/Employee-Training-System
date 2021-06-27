@@ -1,4 +1,4 @@
-<?php require_once('Connections/connection.php'); ?>
+<?php require_once('../Connections/connection.php'); ?>
 <?php
 if (!function_exists("GetSQLValueString")) {
 function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "") 
@@ -38,7 +38,7 @@ if (isset($_GET['pageNum_Detail_Proposal'])) {
 }
 $startRow_Detail_Proposal = $pageNum_Detail_Proposal * $maxRows_Detail_Proposal;
 
-$index_proposal_Detail_Proposal = "2";
+$index_proposal_Detail_Proposal = $_GET['index_proposal'];
 mysql_select_db($database_connection, $connection);
 $query_Detail_Proposal = sprintf("SELECT 	proposal.id_proposal,     proposal.tanggal_dikirim,     proposal.pelatihan_ke,     sum(training_list.biaya_training) as total_biaya,     proposal.approvedby_HRD,     proposal.approvedby_HC from 	proposal INNER JOIN training_list ON proposal.pelatihan_ke = training_list.pelatihan_ke WHERE 	proposal.pelatihan_ke = %s", GetSQLValueString($index_proposal_Detail_Proposal, "int"));
 $query_limit_Detail_Proposal = sprintf("%s LIMIT %d, %d", $query_Detail_Proposal, $startRow_Detail_Proposal, $maxRows_Detail_Proposal);
