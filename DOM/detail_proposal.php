@@ -55,7 +55,7 @@ $totalPages_Detail_Proposal = ceil($totalRows_Detail_Proposal/$maxRows_Detail_Pr
 ?>
 
 <div class="container-fluid px-4">
-        <h1 class="mt-4">Daftar Pelatihan</h1>
+        <h1 class="mt-4">Detail Proposal</h1>
         <ol class="breadcrumb mb-4">
             <li class="breadcrumb-item"><a href="../DOM/dashboard.php">Dashboard</a></li>
             <li class="breadcrumb-item"><a href="../DOM/dashboard.php?page=daftar_pelatihan">Daftar Pelatihan</a></li>
