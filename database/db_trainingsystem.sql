@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 22, 2021 at 08:23 AM
+-- Generation Time: Jun 28, 2021 at 07:22 PM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 5.6.33
 
@@ -86,23 +86,11 @@ CREATE TABLE `karyawan` (
 --
 
 INSERT INTO `karyawan` (`id_karyawan`, `nama`, `alamat`, `tanggal lahir`, `unit`, `posisi`, `username`, `password`, `access_level`) VALUES
-(1, 'Sandi', 'Alamanda Raya', '2000-07-28', 'Production', 'Developer', 'xiesandi', 'xiesandi', 'Employee'),
-(2, 'Viera', 'Cimahi', '2000-06-21', 'Production', 'Unit Manager', 'vie', 'vie', 'Manager'),
-(3, 'Ibnu', 'Karawang', '2000-06-21', 'Production', 'Designer', 'ibnu', 'ibnu', 'Employee');
-
--- --------------------------------------------------------
-
---
--- Stand-in structure for view `list`
--- (See below for the actual view)
---
-CREATE TABLE `list` (
-`pelatihan_ke` int(11)
-,`id_karyawan` int(11)
-,`nama` varchar(50)
-,`nama_training` text
-,`tanggal_training` date
-);
+(1, 'Sandi Pratama', 'Alamanda', '2000-07-28', 'Production', 'Project Manager', 'xiesandi', 'xiesandi', 'Manager'),
+(2, 'Viera Veranda', 'Cimahi', '2000-06-21', 'Production', 'Unit', 'vie', 'vie', 'Manager'),
+(3, 'Ibnu', 'Karawang', '2000-06-21', 'Production', 'Designer', 'ibnu', 'ibnu', 'Employee'),
+(4, 'HR', 'HR', '2000-01-01', 'HR', 'HR', 'HR', 'HR', 'HR'),
+(5, 'HC', 'HC', '2000-01-01', 'HC', 'HC', 'HC', 'HC', 'HC');
 
 -- --------------------------------------------------------
 
@@ -124,7 +112,8 @@ CREATE TABLE `proposal` (
 
 INSERT INTO `proposal` (`id_proposal`, `tanggal_dikirim`, `pelatihan_ke`, `approvedby_HRD`, `approvedby_HC`) VALUES
 (1, '2021-06-23', 1, 'On Review', 'On Review'),
-(2, '2021-06-24', 2, 'On Review', 'On Review');
+(2, '2021-06-24', 2, 'On Review', 'On Review'),
+(3, '2021-06-22', 3, 'On Review', 'On Review');
 
 -- --------------------------------------------------------
 
@@ -148,16 +137,8 @@ INSERT INTO `training_list` (`pelatihan_ke`, `id_karyawan`, `nama_training`, `ta
 (1, 1, 'AWS Associate Cloud', '2021-06-21', 1000000),
 (1, 2, 'Github Project Management', '2021-06-22', 3500000),
 (2, 1, 'PLSQL Basic', '2021-06-21', 1000000),
-(2, 3, 'Desain Grafis', '2021-06-24', 2500000);
-
--- --------------------------------------------------------
-
---
--- Structure for view `list`
---
-DROP TABLE IF EXISTS `list`;
-
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `list`  AS  select `training_list`.`pelatihan_ke` AS `pelatihan_ke`,`karyawan`.`id_karyawan` AS `id_karyawan`,`karyawan`.`nama` AS `nama`,`training_list`.`nama_training` AS `nama_training`,`training_list`.`tanggal_training` AS `tanggal_training` from (`training_list` join `karyawan` on((`karyawan`.`id_karyawan` = `training_list`.`id_karyawan`))) ;
+(2, 3, 'Desain Grafis', '2021-06-24', 2500000),
+(1, 1, 'Github', '2021-06-25', 1000000);
 
 --
 -- Indexes for dumped tables
@@ -190,13 +171,13 @@ ALTER TABLE `training_list`
 -- AUTO_INCREMENT for table `karyawan`
 --
 ALTER TABLE `karyawan`
-  MODIFY `id_karyawan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_karyawan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `proposal`
 --
 ALTER TABLE `proposal`
-  MODIFY `id_proposal` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_proposal` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables
