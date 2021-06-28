@@ -107,7 +107,7 @@ $totalRows_karyawan = mysql_num_rows($karyawan);
 
     <div class="mb-3">
       <label for="tanggal_lahir" class="form-label">Tanggal Lahir</label>
-      <input type="date" class="form-control" id="tanggal_lahir" name="tanggal_lahir" aria-describedby="" value="<?php echo htmlentities($row_karyawan['tanggal_lahir'], ENT_COMPAT, 'utf-8'); ?>" size="32">
+      <input type="date" class="form-control" id="tanggal_lahir" name="tanggal_lahir" aria-describedby="" value="<?php echo htmlentities($row_karyawan['tanggal lahir'], ENT_COMPAT, 'utf-8'); ?>" size="32">
     </div>
     
     <div class="mb-3">
@@ -121,7 +121,7 @@ $totalRows_karyawan = mysql_num_rows($karyawan);
     
     <div class="mb-3">
       <label for="posisi" class="form-label">Posisi</label>
-      <input type="text" class="form-control" id="posisi" name="posisi" aria-describedby="" value=<?php echo $row_karyawan['posisi']; ?>>
+      <input type="text" class="form-control" id="posisi" name="posisi" aria-describedby="" value="<?php echo htmlentities($row_karyawan['posisi'], ENT_COMPAT, 'utf-8'); ?>" size="32">
     </div>
 
     <div class="mb-3">
@@ -131,13 +131,13 @@ $totalRows_karyawan = mysql_num_rows($karyawan);
 
     <div class="mb-3">
       <label for="password" class="form-label">Password</label>
-      <input type="password" class="form-control" id="password" name="password" aria-describedby="" value=<?php echo $row_karyawan['password']; ?>>
+      <input type="password" class="form-control" id="password" name="password" aria-describedby="" value="<?php echo htmlentities($row_karyawan['password'], ENT_COMPAT, 'utf-8'); ?>" size="32">
     </div>
 
     <div class="mb-3">
       <label for="access_level" class="form-label">Access Level</label>
       <select class="form-select"  id="access_level" name="access_level">
-        <option selected value=<?php echo $row_karyawan['access_level']; ?>>Open this select menu</option>
+        <option selected value=<?php echo $row_karyawan['access_level']; ?> hidden><?php echo $row_karyawan['access_level']; ?></option>
         <option value="HR">HR</option>
         <option value="HC">HC</option>
         <option value="Manager">Manager</option>
