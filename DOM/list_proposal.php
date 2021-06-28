@@ -133,7 +133,7 @@ $totalRows_proposal = mysql_num_rows($proposal);
                                 <td width='20%'><?php echo $row_proposal['approvedby_HC']; ?></td>
                                 <td>
                                     <div>
-                                        <a class="btn btn-success m-1" href="test.php?index_proposal=<?php echo $row_proposal['pelatihan_ke']; ?>"><i class="far fa-clipboard"></i>Detail</a>
+                                        <a class="btn btn-success m-1" href="dashboard.php?page=detail_proposal&index_proposal=<?php echo $row_proposal['pelatihan_ke']; ?>"><i class="far fa-clipboard"></i></a>
                                         <a class="btn btn-secondary m-1" href="#"><i class="far fa-user"></i></a>
                                         
                                         <span <?php echo $actionManager?>>

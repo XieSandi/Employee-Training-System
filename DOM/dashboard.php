@@ -152,6 +152,9 @@
 
                                 case 'daftar_proposal' : include '../DOM/list_proposal.php';
                                     break;
+                                    
+                                case 'detail_proposal' : include '../DOM/detail_proposal.php';
+                                    break;
 
 								default :
 									echo "masuk ke else else gaiiss";

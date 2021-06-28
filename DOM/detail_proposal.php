@@ -53,36 +53,80 @@ if (isset($_GET['totalRows_Detail_Proposal'])) {
 }
 $totalPages_Detail_Proposal = ceil($totalRows_Detail_Proposal/$maxRows_Detail_Proposal)-1;
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Untitled Document</title>
-</head>
 
-<body>
-<table border="1">
-  <tr>
-    <td>id_proposal</td>
-    <td>tanggal_dikirim</td>
-    <td>pelatihan_ke</td>
-    <td>total_biaya</td>
-    <td>approvedby_HRD</td>
-    <td>approvedby_HC</td>
-  </tr>
-  <?php do { ?>
-    <tr>
-      <td><?php echo $row_Detail_Proposal['id_proposal']; ?></td>
-      <td><?php echo $row_Detail_Proposal['tanggal_dikirim']; ?></td>
-      <td><?php echo $row_Detail_Proposal['pelatihan_ke']; ?></td>
-      <td><?php echo $row_Detail_Proposal['total_biaya']; ?></td>
-      <td><?php echo $row_Detail_Proposal['approvedby_HRD']; ?></td>
-      <td><?php echo $row_Detail_Proposal['approvedby_HC']; ?></td>
-    </tr>
-    <?php } while ($row_Detail_Proposal = mysql_fetch_assoc($Detail_Proposal)); ?>
-</table>
-</body>
-</html>
+<div class="container-fluid px-4">
+        <h1 class="mt-4">Daftar Pelatihan</h1>
+        <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item"><a href="../DOM/dashboard.php">Dashboard</a></li>
+            <li class="breadcrumb-item"><a href="../DOM/dashboard.php?page=daftar_pelatihan">Daftar Pelatihan</a></li>
+            <li class="breadcrumb-item active">Detail Proposal</li>
+        </ol>
+        <!-- <div class="card mb-4">
+            <div class="card-body">
+                DataTables is a third party plugin that is used to generate the demo table below. For more information
+                about DataTables, please visit the
+                <a target="_blank" href="https://datatables.net/">official DataTables documentation</a>
+                .
+            </div>
+        </div> -->
+        <div class="card mb-4">
+            <div class="card-header">
+                <i class="fas fa-table me-1"></i>
+                Daftar Pelatihan
+            </div>
+            <div class="card-body">
+                <!-- <div class="d-grid gap-2 pb-3">
+                    <button class="btn btn-primary block">Tambah Data</button>
+                </div> -->
+                <table id="datatablesSimple">
+                    <thead class="text-center">
+                      <tr>
+                        <td>ID Proposal</td>
+                        <td>Tanggal Diajukan</td>
+                        <td>Termin</td>
+                        <td>Total Biaya</td>
+                        <td>Status at HRD</td>
+                        <td>Status at HC</td>
+                      </tr>
+                    </thead>
+                    <tfoot class="text-center">
+                      <tr>
+                        <td>ID Proposal</td>
+                        <td>Tanggal Diajukan</td>
+                        <td>Termin</td>
+                        <td>Total Biaya</td>
+                        <td>Status at HRD</td>
+                        <td>Status at HC</td>
+                      </tr>
+                    </tfoot>
+                    <tbody>
+                        <?php 
+                        function rupiah($angka){
+	
+                            $hasil_rupiah = "Rp " . number_format($angka,2,',','.');
+                            return $hasil_rupiah;
+                         
+                        }
+                        do { ?>
+                            <tr class="text-center">
+                                <td><?php echo $row_Detail_Proposal['id_proposal']; ?></td>
+                                <td><?php echo $row_Detail_Proposal['tanggal_dikirim']; ?></td>
+                                <td><?php echo $row_Detail_Proposal['pelatihan_ke']; ?></td>
+                                <td class="text-end"><?php echo rupiah($row_Detail_Proposal['total_biaya']); ?></td>
+                                <td><?php echo $row_Detail_Proposal['approvedby_HRD']; ?></td>
+                                <td><?php echo $row_Detail_Proposal['approvedby_HC']; ?></td>
+                                </td>
+                            </tr>
+                        <?php } while ($row_List = mysql_fetch_assoc($Detail_Proposal)); ?>
+                    </tbody>
+                </table>
+                <div class="d-grid gap-2 pt-3">
+                    <button class="btn btn-primary block">Tambah Data</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 <?php
 mysql_free_result($Detail_Proposal);
 ?>

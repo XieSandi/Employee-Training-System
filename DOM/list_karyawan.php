@@ -102,7 +102,7 @@ $totalRows_recordset_karyawan = mysql_num_rows($recordset_karyawan);
                             <!-- <td><?php //echo $row_recordset_karyawan['password']; ?></td> -->
                             <td><?php echo $row_recordset_karyawan['access_level']; ?></td>
                             <td class="text-center">
-                                <a class="btn btn-primary m-1" href="edit_karyawan.php?id_karyawan=<?php echo $row_recordset_karyawan['id_karyawan']; ?>">Edit</a>
+                                <a class="btn btn-primary m-1" href="../DOM/dashboard.php?page=edit_karyawan&id_karyawan=<?php echo $row_recordset_karyawan['id_karyawan']; ?>">Edit</a>
                                 <a class="btn btn-danger m-1" href="../DOM/delete_karyawan.php?id_karyawan=<?php echo $row_recordset_karyawan['id_karyawan']; ?>">Delete</a>
                             </td>
                         </tr>
