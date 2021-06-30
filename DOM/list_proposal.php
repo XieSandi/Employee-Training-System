@@ -37,8 +37,9 @@ if (isset($_SERVER['QUERY_STRING'])) {
 }
 
 if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form1")) {
-  $updateSQL = sprintf("UPDATE proposal SET approvedby_HRD=%s WHERE id_proposal=%s",
+  $updateSQL = sprintf("UPDATE proposal SET approvedby_HRD=%s , approvedby_HC=%s WHERE id_proposal=%s",
                        GetSQLValueString($_POST['approvedby_HRD'], "text"),
+                       GetSQLValueString($_POST['approvedby_HC'], "text"),
                        GetSQLValueString($_POST['id_proposal'], "int"));
 
   mysql_select_db($database_connection, $connection);
@@ -121,24 +122,38 @@ $totalRows_proposal = mysql_num_rows($proposal);
                             $actionManager = "";
                             $actionHC = "hidden = true";
                             $actionHR = "hidden = true";
+                            $Addbutton = "";
                         }
                         else if ($_SESSION['access_level'] == "HR"){
                             $actionManager = "hidden = true";
                             $actionHC = "hidden = true";
                             $actionHR = "";
+                            $aksesModalA = "approvedby_HRD";
+                            $aksesModalB = "approvedby_HC";
+                            $Addbutton = "hidden = true";
                         }
                         else if ($_SESSION['access_level'] == "HC"){
                             $actionManager = "hidden = true";
                             $actionHC = "";
                             $actionHR = "hidden = true";
+                            $aksesModalA = "approvedby_HC";
+                            $aksesModalB = "approvedby_HRD";
+                            $Addbutton = "hidden = true";
                         }
                         else if ($_SESSION['access_level'] == "Employee"){
                             $actionManager = "hidden = true";
                             $actionHC = "hidden = true";
                             $actionHR = "hidden = true";
+                            $Addbutton = "hidden = true";
                         }
 
-                        do { ?>
+
+
+                        do { 
+                            
+                            $coba = $row_proposal['id_proposal'];
+
+                            ?>
                     <tr>
                         <td width='10%'><?php echo $row_proposal['id_proposal']; ?></td>
                         <td width='20%'><?php echo $row_proposal['tanggal_dikirim']; ?></td>
@@ -167,14 +182,14 @@ $totalRows_proposal = mysql_num_rows($proposal);
                                 </span>
 
                                 <span <?php echo $actionHC?>>
-                                    <a class="btn btn-success m-1" href="#"><i class="far fa-check-circle"></i></a>
-                                    <a class="btn btn-danger m-1" href="#"><i class="far fa-times-circle"></i></a>
+                                    <a class="btn btn-success m-1" data-bs-toggle="modal"data-bs-target="#modalApprove"><i class="far fa-check-circle"></i></a>
+                                    <a class="btn btn-danger m-1" data-bs-toggle="modal"data-bs-target="#modalReject"><i class="far fa-times-circle"></i></a>
                                 </span>
                             </div>
                         </td>
                     </tr>
 
-                    <!-- Modal  Approve -->
+                    <!-- Modal  Approve-->
                     <div class="modal fade" id="modalApprove" tabindex="-1" aria-labelledby="modalApprove"
                         aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered">
@@ -189,7 +204,8 @@ $totalRows_proposal = mysql_num_rows($proposal);
                                     <div class="modal-body">
                                         Approve Proposal tersebut sebagai pihak <?php echo $_SESSION['access_level']?>?
 
-                                        <input hidden type="text" name="approvedby_HRD" value="Approved" size="32" />
+                                        <input hidden type="text" name="<?php echo $aksesModalA ?>" value="Approved" size="32" />
+                                        <input hidden type="text" name="<?php echo $aksesModalB ?>" value="<?php echo $row_proposal[$aksesModalB]; ?>" size="32" />
 
                                         <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                         <button type="submit" class="btn btn-primary">Approve</button> -->
@@ -209,7 +225,7 @@ $totalRows_proposal = mysql_num_rows($proposal);
                         </div>
                     </div>
 
-                    <!-- Modal  Reject -->
+                    <!-- Modal  Reject-->
                     <div class="modal fade" id="modalReject" tabindex="-1" aria-labelledby="modalReject"
                         aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered">
@@ -224,7 +240,8 @@ $totalRows_proposal = mysql_num_rows($proposal);
                                     <div class="modal-body">
                                         Reject Proposal tersebut sebagai pihak <?php echo $_SESSION['access_level']?>?
 
-                                        <input hidden type="text" name="approvedby_HRD" value="Rejected" size="32" />
+                                        <input hidden type="text" name="<?php echo $aksesModalA ?>" value="Rejected" size="32" />
+                                        <input hidden type="text" name="<?php echo $aksesModalB ?>" value="<?php echo $row_proposal[$aksesModalB]; ?>" size="32" />
 
                                         <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                         <button type="submit" class="btn btn-primary">Approve</button> -->
@@ -249,8 +266,8 @@ $totalRows_proposal = mysql_num_rows($proposal);
                     <?php } while ($row_proposal = mysql_fetch_assoc($proposal)); ?>
                 </tbody>
             </table>
-            <div class="d-grid gap-2 pt-3">
-                <a class="btn btn-primary block" href="../DOM/dashboard.php?page=tambah_karyawan">Tambah Data</a>
+            <div class="d-grid gap-2 pt-3"  >
+                <a <?php echo $Addbutton ?> class="btn btn-primary block" href="../DOM/dashboard.php?page=tambah_karyawan">Tambah Data</a>
             </div>
         </div>
     </div>
