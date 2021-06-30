@@ -31,6 +31,21 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
 }
 }
 
+if ((isset($_GET['id_proposal'])) && ($_GET['id_proposal'] != "")) {
+  $deleteSQL = sprintf("DELETE FROM proposal WHERE id_proposal=%s",
+                       GetSQLValueString($_GET['id_proposal'], "int"));
+
+  mysql_select_db($database_connection, $connection);
+  $Result1 = mysql_query($deleteSQL, $connection) or die(mysql_error());
+
+  $deleteGoTo = "dashboard.php?page=daftar_proposal";
+  if (isset($_SERVER['QUERY_STRING'])) {
+    $deleteGoTo .= (strpos($deleteGoTo, '?')) ? "&" : "?";
+    $deleteGoTo .= $_SERVER['QUERY_STRING'];
+  }
+  header(sprintf("Location: %s", $deleteGoTo));
+}
+
 $colname_Recordset1 = "-1";
 if (isset($_GET['id_proposal'])) {
   $colname_Recordset1 = $_GET['id_proposal'];
