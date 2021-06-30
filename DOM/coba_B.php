@@ -52,22 +52,30 @@ if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form1")) {
   header(sprintf("Location: %s", $updateGoTo));
 }
 
-$colname_Recordset1 = "-1";
+$colname_proposal = "-1";
 if (isset($_GET['id_proposal'])) {
-  $colname_Recordset1 = $_GET['id_proposal'];
+  $colname_proposal = $_GET['id_proposal'];
 }
 mysql_select_db($database_connection, $connection);
-$query_Recordset1 = sprintf("SELECT * FROM proposal WHERE id_proposal = %s", GetSQLValueString($colname_Recordset1, "int"));
-$Recordset1 = mysql_query($query_Recordset1, $connection) or die(mysql_error());
-$row_Recordset1 = mysql_fetch_assoc($Recordset1);
-$totalRows_Recordset1 = mysql_num_rows($Recordset1);
+$query_proposal = sprintf("SELECT * FROM proposal WHERE id_proposal = %s", GetSQLValueString($colname_proposal, "int"));
+$proposal = mysql_query($query_proposal, $connection) or die(mysql_error());
+$row_proposal = mysql_fetch_assoc($proposal);
+$totalRows_proposal = mysql_num_rows($proposal);$colname_proposal = "-1";
+if (isset($_GET['id_proposal'])) {
+  $colname_proposal = $_GET['id_proposal'];
+}
+mysql_select_db($database_connection, $connection);
+$query_proposal = sprintf("SELECT * FROM proposal WHERE id_proposal = %s", GetSQLValueString($colname_proposal, "int"));
+$proposal = mysql_query($query_proposal, $connection) or die(mysql_error());
+$row_proposal = mysql_fetch_assoc($proposal);
+$totalRows_proposal = mysql_num_rows($proposal);
 ?>
 
 <form action="<?php echo $editFormAction; ?>" method="post" name="form1" id="form1">
   <table align="center">
     <tr valign="baseline">
       <td nowrap="nowrap" align="right">Id_proposal:</td>
-      <td><?php echo $row_Recordset1['id_proposal']; ?></td>
+      <td><?php echo $row_proposal['id_proposal']; ?></td>
     </tr>
     <tr valign="baseline">
       <td nowrap="nowrap" align="right">Approvedby_HRD:</td>
@@ -79,9 +87,9 @@ $totalRows_Recordset1 = mysql_num_rows($Recordset1);
     </tr>
   </table>
   <input type="hidden" name="MM_update" value="form1" />
-  <input type="hidden" name="id_proposal" value="<?php echo $row_Recordset1['id_proposal']; ?>" />
+  <input type="hidden" name="id_proposal" value="<?php echo $row_proposal['id_proposal']; ?>" />
 </form>
 
 <?php
-mysql_free_result($Recordset1);
+mysql_free_result($proposal);
 ?>
