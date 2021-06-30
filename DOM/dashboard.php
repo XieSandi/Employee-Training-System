@@ -144,8 +144,11 @@
 								case 'edit_karyawan' : include '../DOM/edit_karyawan.php';
                                     break;
 
-                                    case 'tambah_karyawan' : include '../DOM/add_karyawan.php';
-                                break;
+                                case 'edit_pelatihan' : include '../DOM/edit_pelatihan.php';
+                                    break;
+
+                                case 'tambah_karyawan' : include '../DOM/add_karyawan.php';
+                                    break;
 
                                 case 'daftar_pelatihan' : include '../DOM/list_pelatihan.php';
                                     break;
@@ -172,7 +175,7 @@
             <footer class="py-4 bg-light mt-auto">
                 <div class="container-fluid px-4">
                     <div class="d-flex align-items-center justify-content-between small">
-                        <div class="text-muted">Copyright &copy; Your Website 2021</div>
+                        <div class="text-muted">Copyright &copy; Sistem Pelatihan 2021</div>
                         <div>
                             <a href="#">Privacy Policy</a>
                             &middot;
