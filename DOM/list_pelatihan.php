@@ -81,6 +81,7 @@ $totalPages_List = ceil($totalRows_List/$maxRows_List)-1;
                 <table id="datatablesSimple">
                     <thead class="text-center">
                         <tr>
+                            <td>ID Pelatihan</td>
                             <td>Index Proposal</td>
                             <!-- <td>id_karyawan</td> -->
                             <td>Nama Pelatihan</td>
@@ -91,6 +92,7 @@ $totalPages_List = ceil($totalRows_List/$maxRows_List)-1;
                     </thead>
                     <tfoot class="text-center">
                         <tr>
+                            <td>ID Pelatihan</td>
                             <td>Index Proposal</td>
                             <!-- <td>id_karyawan</td> -->
                             <td>Nama Pelatihan</td>
@@ -108,6 +110,7 @@ $totalPages_List = ceil($totalRows_List/$maxRows_List)-1;
                         }
                         do { ?>
                             <tr>
+                                <td class="text-center"><?php echo $row_List['id_pelatihan']; ?></td>
                                 <td class="text-center"><?php echo $row_List['pelatihan_ke']; ?></td>
                                 <!-- <td><?php //echo $row_List['id_karyawan']; ?></td> -->
                                 <td><?php echo $row_List['nama_training']; ?></td>

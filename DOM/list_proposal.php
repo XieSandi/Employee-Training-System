@@ -51,7 +51,7 @@ $totalRows_proposal = mysql_num_rows($proposal);
                 <i class="far fa-clipboard"></i> = Details | 
                 <i class="far fa-user"></i> = Daftar Peserta | 
                 <i class="far fa-trash-alt"></i> = Hapus | 
-                <i class="far fa-edit"></i> = Edit |
+                <!-- <i class="far fa-edit"></i> = Edit | -->
                 <i class="far fa-check-circle"></i> = Approve |
                 <i class="far fa-times-circle"></i> = Reject
             </div>
@@ -137,8 +137,8 @@ $totalRows_proposal = mysql_num_rows($proposal);
                                         <a class="btn btn-secondary m-1" href="dashboard.php?page=daftar_peserta&index_proposal=<?php echo $row_proposal['pelatihan_ke']; ?>"><i class="far fa-user"></i></a>
                                         
                                         <span <?php echo $actionManager?>>
-                                            <a class="btn btn-primary m-1" href="#"><i class="far fa-edit"></i></a>
-                                            <a class="btn btn-danger m-1" href="#"><i class="far fa-trash-alt"></i></a>
+                                            <!-- <a class="btn btn-primary m-1" href="#"><i class="far fa-edit"></i></a> -->
+                                            <a class="btn btn-danger m-1" href="../DOM/delete_proposal.php?id_proposal=<?php echo $row_proposal['id_proposal']; ?>"><i class="far fa-trash-alt"></i></a>
                                         </span>
                                         
                                         <span <?php echo $actionHR?>>
