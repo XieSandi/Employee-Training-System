@@ -142,7 +142,7 @@ $totalRows_proposal = mysql_num_rows($proposal);
                                         </span>
                                         
                                         <span <?php echo $actionHR?>>
-                                            <a class="btn btn-success m-1" href="#"><i class="far fa-check-circle"></i></a>
+                                            <a class="btn btn-success m-1" data-bs-toggle="modal" data-bs-target="#modalApprove"><i class="far fa-check-circle"></i></a>
                                             <a class="btn btn-danger m-1" href="#"><i class="far fa-times-circle"></i></a>
                                         </span>
                                         
@@ -162,5 +162,26 @@ $totalRows_proposal = mysql_num_rows($proposal);
             </div>
         </div>
     </div>
+
+
+<!-- Modal  Approve -->
+<div class="modal fade" id="modalApprove" tabindex="-1" aria-labelledby="modalApprove" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 <?php mysql_free_result($proposal);?>
