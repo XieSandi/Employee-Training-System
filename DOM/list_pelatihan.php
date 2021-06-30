@@ -118,7 +118,7 @@ $totalPages_List = ceil($totalRows_List/$maxRows_List)-1;
                                 <td class="text-end"><?php echo rupiah($row_List['biaya_training']); ?>,-</td>
                                 <td class="text-center">
                                     <a class="btn btn-primary m-1" href="edit_karyawan.php?id_karyawan=<?php echo $row_recordset_karyawan['id_karyawan']; ?>">Edit</a>
-                                    <a class="btn btn-danger m-1" href="../DOM/delete_pelatihan.php?id_pelatihan=<?php echo $List['id_pelatihan']; ?>">Delete</a>
+                                    <a class="btn btn-danger m-1" href="../DOM/delete_pelatihan.php?id_pelatihan=<?php echo $row_List['id_pelatihan']; ?>">Delete</a>
                                 </td>
                             </tr>
                         <?php } while ($row_List = mysql_fetch_assoc($List)); ?>
