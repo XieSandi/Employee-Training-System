@@ -19,7 +19,7 @@
                                 <div class="card bg-primary text-white mb-4">
                                     <div class="card-body">Daftar Karyawan</div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="../DOM/dashbord.php?page=daftar_karyawan">View Details</a>
+                                        <a class="small text-white stretched-link" href="../DOM/dashboard.php?page=daftar_karyawan">View Details</a>
                                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                                     </div>
                                 </div>
@@ -28,7 +28,7 @@
                                 <div class="card bg-warning text-white mb-4">
                                     <div class="card-body">Daftar Pelatihan</div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="../DOM/dashbord.php?page=daftar_pelatihan">View Details</a>
+                                        <a class="small text-white stretched-link" href="../DOM/dashboard.php?page=daftar_pelatihan">View Details</a>
                                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                                     </div>
                                 </div>
@@ -37,7 +37,7 @@
                                 <div class="card bg-success text-white mb-4">
                                     <div class="card-body">Daftar Proposal</div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="../DOM/dashbord.php?page=daftar_proposal">View Details</a>
+                                        <a class="small text-white stretched-link" href="../DOM/dashboard.php?page=daftar_proposal">View Details</a>
                                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                                     </div>
                                 </div>
