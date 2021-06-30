@@ -113,6 +113,9 @@
                                 case 'tambah_pelatihan' : include '../DOM/add_pelatihan.php';
                                     break;
 
+                                case 'tambah_proposal' : include '../DOM/add_proposal.php';
+                                    break;
+
                                 case 'daftar_pelatihan' : include '../DOM/list_pelatihan.php';
                                     break;
 

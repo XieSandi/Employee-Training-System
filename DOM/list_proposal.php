@@ -253,7 +253,7 @@ $totalRows_proposal = mysql_num_rows($proposal);
                 </tbody>
             </table>
             <div class="d-grid gap-2 pt-3"  >
-                <a <?php echo $Addbutton ?> class="btn btn-primary block" href="../DOM/dashboard.php?page=tambah_karyawan">Tambah Data</a>
+                <a <?php echo $Addbutton ?> class="btn btn-primary block" href="../DOM/dashboard.php?page=tambah_proposal">Tambah Data</a>
             </div>
         </div>
     </div>
