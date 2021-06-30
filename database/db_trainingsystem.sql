@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 28, 2021 at 07:22 PM
+-- Generation Time: Jun 30, 2021 at 01:37 PM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 5.6.33
 
@@ -86,11 +86,13 @@ CREATE TABLE `karyawan` (
 --
 
 INSERT INTO `karyawan` (`id_karyawan`, `nama`, `alamat`, `tanggal lahir`, `unit`, `posisi`, `username`, `password`, `access_level`) VALUES
-(1, 'Sandi Pratama', 'Alamanda', '2000-07-28', 'Production', 'Project Manager', 'xiesandi', 'xiesandi', 'Manager'),
+(1, 'Azizah', '.', '2000-07-28', 'Production', 'Project Manager', 'Azizah', 'Azizah', 'Manager'),
 (2, 'Viera Veranda', 'Cimahi', '2000-06-21', 'Production', 'Unit', 'vie', 'vie', 'Manager'),
 (3, 'Ibnu', 'Karawang', '2000-06-21', 'Production', 'Designer', 'ibnu', 'ibnu', 'Employee'),
 (4, 'HR', 'HR', '2000-01-01', 'HR', 'HR', 'HR', 'HR', 'HR'),
-(5, 'HC', 'HC', '2000-01-01', 'HC', 'HC', 'HC', 'HC', 'HC');
+(5, 'HC', 'HC', '2000-01-01', 'HC', 'HC', 'HC', 'HC', 'HC'),
+(8, 'Manager', 'Manager', '2021-06-01', 'Manager', 'Manager', 'manager', 'manager', 'Manager'),
+(9, 'Employee', 'Employee', '2021-06-01', 'Employee', 'Employee', 'employee', 'employee', 'Employee');
 
 -- --------------------------------------------------------
 
@@ -102,8 +104,8 @@ CREATE TABLE `proposal` (
   `id_proposal` int(11) NOT NULL,
   `tanggal_dikirim` date NOT NULL,
   `pelatihan_ke` int(11) NOT NULL,
-  `approvedby_HRD` enum('Approved','Rejected','On Review') DEFAULT 'On Review',
-  `approvedby_HC` enum('Approved','Rejected','On Review') DEFAULT 'On Review'
+  `approvedby_HRD` enum('Approved','Rejected','On Review') NOT NULL DEFAULT 'On Review',
+  `approvedby_HC` enum('Approved','Rejected','On Review') NOT NULL DEFAULT 'On Review'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -111,9 +113,9 @@ CREATE TABLE `proposal` (
 --
 
 INSERT INTO `proposal` (`id_proposal`, `tanggal_dikirim`, `pelatihan_ke`, `approvedby_HRD`, `approvedby_HC`) VALUES
-(1, '2021-06-23', 1, 'On Review', 'On Review'),
+(1, '2021-06-23', 1, 'Approved', 'Approved'),
 (2, '2021-06-24', 2, 'On Review', 'On Review'),
-(3, '2021-06-22', 3, 'On Review', 'On Review');
+(3, '2021-06-30', 3, 'On Review', 'On Review');
 
 -- --------------------------------------------------------
 
@@ -122,6 +124,7 @@ INSERT INTO `proposal` (`id_proposal`, `tanggal_dikirim`, `pelatihan_ke`, `appro
 --
 
 CREATE TABLE `training_list` (
+  `id_pelatihan` int(11) NOT NULL,
   `pelatihan_ke` int(11) NOT NULL,
   `id_karyawan` int(11) NOT NULL,
   `nama_training` text NOT NULL,
@@ -133,12 +136,11 @@ CREATE TABLE `training_list` (
 -- Dumping data for table `training_list`
 --
 
-INSERT INTO `training_list` (`pelatihan_ke`, `id_karyawan`, `nama_training`, `tanggal_training`, `biaya_training`) VALUES
-(1, 1, 'AWS Associate Cloud', '2021-06-21', 1000000),
-(1, 2, 'Github Project Management', '2021-06-22', 3500000),
-(2, 1, 'PLSQL Basic', '2021-06-21', 1000000),
-(2, 3, 'Desain Grafis', '2021-06-24', 2500000),
-(1, 1, 'Github', '2021-06-25', 1000000);
+INSERT INTO `training_list` (`id_pelatihan`, `pelatihan_ke`, `id_karyawan`, `nama_training`, `tanggal_training`, `biaya_training`) VALUES
+(1, 1, 1, 'AWS Associate Cloud', '2021-06-21', 1000000),
+(2, 1, 2, 'Github Project Management', '2021-06-22', 3500000),
+(3, 2, 1, 'PLSQL Basic', '2021-06-21', 1000000),
+(4, 2, 3, 'Desain Grafis', '2021-06-24', 2500000);
 
 --
 -- Indexes for dumped tables
@@ -161,6 +163,7 @@ ALTER TABLE `proposal`
 -- Indexes for table `training_list`
 --
 ALTER TABLE `training_list`
+  ADD PRIMARY KEY (`id_pelatihan`),
   ADD KEY `id_karyawan` (`id_karyawan`);
 
 --
@@ -171,13 +174,19 @@ ALTER TABLE `training_list`
 -- AUTO_INCREMENT for table `karyawan`
 --
 ALTER TABLE `karyawan`
-  MODIFY `id_karyawan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id_karyawan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `proposal`
 --
 ALTER TABLE `proposal`
-  MODIFY `id_proposal` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_proposal` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `training_list`
+--
+ALTER TABLE `training_list`
+  MODIFY `id_pelatihan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- Constraints for dumped tables

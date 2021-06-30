@@ -134,7 +134,7 @@
 							}
 						} 
 						else{
-							include "../DOM/Manager.php";
+							include "../DOM/main_page.php";
 						}
 				?>
             </main>
