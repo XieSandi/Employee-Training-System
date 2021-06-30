@@ -104,47 +104,33 @@ $totalRows_proposal = mysql_num_rows($proposal);
                 <tbody class="text-center">
                     <?php 
 
-                        // switch($access){
-                        //     case 'Manager' :
-                        //         $actionManager = "";
-                        //         $actionHC = "hidden";
-                        //         $actionHR = "hidden";
-                        //     break;
-                        //     case 'HC' :
-                        //         $actionManager = "hidden";
-                        //         $actionHC = "";
-                        //         $actionHR = "hidden";
-                        //     break;
-
-                        // }
-
                         if ($_SESSION['access_level'] == "Manager"){
                             $actionManager = "";
-                            $actionHC = "hidden = true";
-                            $actionHR = "hidden = true";
+                            $actionHC = "hidden";
+                            $actionHR = "hidden";
                             $Addbutton = "";
                         }
                         else if ($_SESSION['access_level'] == "HR"){
-                            $actionManager = "hidden = true";
-                            $actionHC = "hidden = true";
+                            $actionManager = "hidden";
+                            $actionHC = "hidden";
                             $actionHR = "";
                             $aksesModalA = "approvedby_HRD";
                             $aksesModalB = "approvedby_HC";
-                            $Addbutton = "hidden = true";
+                            $Addbutton = "hidden";
                         }
                         else if ($_SESSION['access_level'] == "HC"){
-                            $actionManager = "hidden = true";
+                            $actionManager = "hidden";
                             $actionHC = "";
-                            $actionHR = "hidden = true";
+                            $actionHR = "hidden";
                             $aksesModalA = "approvedby_HC";
                             $aksesModalB = "approvedby_HRD";
-                            $Addbutton = "hidden = true";
+                            $Addbutton = "hidden";
                         }
                         else if ($_SESSION['access_level'] == "Employee"){
-                            $actionManager = "hidden = true";
-                            $actionHC = "hidden = true";
-                            $actionHR = "hidden = true";
-                            $Addbutton = "hidden = true";
+                            $actionManager = "hidden";
+                            $actionHC = "hidden";
+                            $actionHR = "hidden";
+                            $Addbutton = "hidden";
                         }
 
 

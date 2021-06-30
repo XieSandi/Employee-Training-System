@@ -53,6 +53,21 @@ if (isset($_GET['totalRows_List'])) {
   $totalRows_List = mysql_num_rows($all_List);
 }
 $totalPages_List = ceil($totalRows_List/$maxRows_List)-1;
+
+
+if ($_SESSION['access_level'] == "Manager"){
+    $ActionButton = "";
+}
+else if ($_SESSION['access_level'] == "HR"){
+    $ActionButton = "";
+}
+else if ($_SESSION['access_level'] == "HC"){
+    $ActionButton = "hidden";
+}
+else if ($_SESSION['access_level'] == "Employee"){
+    $ActionButton = "hidden";
+}
+
 ?>
 
     <div class="container-fluid px-4">
@@ -87,7 +102,7 @@ $totalPages_List = ceil($totalRows_List/$maxRows_List)-1;
                             <td>Nama Pelatihan</td>
                             <td>Waktu Pelatihan</td>
                             <td>Biaya / Peserta (Rupiah)</td>
-                            <td>Actions</td>
+                            <td <?php echo $ActionButton?> >Actions</td>
                         </tr>
                     </thead>
                     <tfoot class="text-center">
@@ -98,10 +113,12 @@ $totalPages_List = ceil($totalRows_List/$maxRows_List)-1;
                             <td>Nama Pelatihan</td>
                             <td>Waktu Pelatihan</td>
                             <td>Biaya / Peserta (Rupiah)</td>
+                            <td <?php echo $ActionButton?> >Actions</td>
                         </tr>
                     </tfoot>
                     <tbody>
                         <?php 
+
                         function rupiah($angka){
 	
                             $hasil_rupiah = "Rp " . number_format($angka,2,',','.');
@@ -116,7 +133,7 @@ $totalPages_List = ceil($totalRows_List/$maxRows_List)-1;
                                 <td><?php echo $row_List['nama_training']; ?></td>
                                 <td class="text-center"><?php echo $row_List['tanggal_training']; ?></td>
                                 <td class="text-end"><?php echo rupiah($row_List['biaya_training']); ?>,-</td>
-                                <td class="text-center">
+                                <td class="text-center" <?php echo $ActionButton?> >
                                     <a class="btn btn-primary m-1" href="../DOM/dashboard.php?page=edit_pelatihan&id_pelatihan=<?php echo $row_List['id_pelatihan']; ?>">Edit</a>
                                     <a class="btn btn-danger m-1" href="../DOM/delete_pelatihan.php?id_pelatihan=<?php echo $row_List['id_pelatihan']; ?>">Delete</a>
                                 </td>
@@ -125,7 +142,7 @@ $totalPages_List = ceil($totalRows_List/$maxRows_List)-1;
                     </tbody>
                 </table>
                 <div class="d-grid gap-2 pt-3">
-                    <button class="btn btn-primary block">Tambah Data</button>
+                    <a <?php echo $ActionButton?> class="btn btn-primary block" href="../DOM/Dashboard.php?page=tambah_pelatihan" >Tambah Data</a>
                 </div>
             </div>
         </div>
