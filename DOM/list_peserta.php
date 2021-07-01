@@ -84,7 +84,7 @@ $totalRows_list_peserta = mysql_num_rows($list_peserta);
         <div class="card mb-4">
             <div class="card-header">
                 <i class="fas fa-table me-1"></i>
-                Daftar Karyawan
+                Daftar Peserta
             </div>
             <div class="card-body">
                 <!-- <div class="d-grid gap-2 pb-3">
@@ -93,8 +93,8 @@ $totalRows_list_peserta = mysql_num_rows($list_peserta);
                 <table id="datatablesSimple">
                     <thead class="text-center">
                         <tr>
-                          <td>ID Karyawan</td>
-                          <td>Nama Karyawan</td>
+                          <td>ID Peserta</td>
+                          <td>Nama Peserta</td>
                           <td>Nama Training</td>
                           <td>Jadwal Training</td>
                           <!-- <td>TOOLS</td> -->
@@ -102,8 +102,8 @@ $totalRows_list_peserta = mysql_num_rows($list_peserta);
                     </thead>
                     <tfoot class="text-center">
                         <tr>
-                          <td>ID Karyawan</td>
-                          <td>Nama Karyawan</td>
+                          <td>ID Peserta</td>
+                          <td>Nama Peserta</td>
                           <td>Nama Training</td>
                           <td>Jadwal Training</td>
                           <!-- <td>TOOLS</td> -->
@@ -120,9 +120,6 @@ $totalRows_list_peserta = mysql_num_rows($list_peserta);
                           <?php } while ($row_list_peserta = mysql_fetch_assoc($list_peserta)); ?>
                     </tbody>
                 </table>
-                <div class="d-grid gap-2 pt-3">
-                    <a class="btn btn-primary block" href="../DOM/dashboard.php?page=tambah_karyawan">Tambah Data</a>
-                </div>
             </div>
         </div>
     </div>
