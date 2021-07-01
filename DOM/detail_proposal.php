@@ -120,9 +120,6 @@ $totalPages_Detail_Proposal = ceil($totalRows_Detail_Proposal/$maxRows_Detail_Pr
                         <?php } while ($row_List = mysql_fetch_assoc($Detail_Proposal)); ?>
                     </tbody>
                 </table>
-                <div class="d-grid gap-2 pt-3">
-                    <button class="btn btn-primary block">Tambah Data</button>
-                </div>
             </div>
         </div>
     </div>
